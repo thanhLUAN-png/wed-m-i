@@ -1,0 +1,465 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --------------------------- Kiểu cho container chính --------------------------- */
+        .tude {
+            position: relative; /* Đặt vị trí của phần tử tương đối với vị trí bình thường của nó */
+            z-index: 1; /* Đặt thứ tự xếp chồng của phần tử */
+            display: flex; /* Bật chế độ bố cục flexbox */
+            flex-direction: row; /* Sắp xếp các phần tử con theo hàng ngang */
+            justify-content: center; /* Căn giữa các phần tử con theo chiều ngang */
+            align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+            padding: 12px 16px; /* Thêm khoảng cách bên trong phần tử */
+            gap: 4px; /* Thêm khoảng cách giữa các phần tử con */
+            background-color: aquamarine; /* Đặt màu nền cho phần tử */
+        }
+
+        /* --------------------------- Kiểu cho container ở giữa --------------------------- */
+        .giua {
+            width: 1280px; /* Đặt chiều rộng cố định cho container */
+            padding-left: 24px; /* Thêm khoảng cách bên trái */
+            padding-right: 24px; /* Thêm khoảng cách bên phải */
+            margin-right: auto; /* Căn giữa container theo chiều ngang */
+            margin-left: auto; /* Căn giữa container theo chiều ngang */
+        }
+
+        /* --------------------------- Kiểu cho nhóm linh hoạt các phần tử --------------------------- */
+        .gop2khung {
+            display: flex; /* Bật chế độ bố cục flexbox */
+            align-items: flex-start; /* Căn các phần tử con ở đầu trục chéo */
+            gap: 48px; /* Thêm khoảng cách giữa các phần tử con */
+            flex: 1 0 0px; /* Cho phép container mở rộng và thu hẹp */
+        }
+
+        /* --------------------------- Kiểu cho hình ảnh --------------------------- */
+        .imgtude {
+            width: 79px; /* Đặt chiều rộng của hình ảnh */
+            aspect-ratio: auto 79 / 16; /* Giữ tỉ lệ khung hình */
+            height: 16px; /* Đặt chiều cao cố định */
+        }
+
+        /* --------------------------- Kiểu cho container cột --------------------------- */
+        .khung1 {
+            display: flex; /* Bật chế độ bố cục flexbox */
+            flex-direction: column; /* Sắp xếp các phần tử con theo chiều dọc */
+        }
+
+            /* Kiểu cho hình ảnh và văn bản bên trong khung1 */
+            .khung1 img {
+                width: 96px; /* Đặt chiều rộng của hình ảnh */
+                height: 40px; /* Đặt chiều cao của hình ảnh */
+            }
+
+            .khung1 span {
+                font-size: 14px; /* Đặt kích thước phông chữ cho văn bản */
+                color: rgb(0, 62, 161); /* Đặt màu chữ */
+                margin-top: 8px; /* Thêm khoảng cách trên cùng */
+                font-weight: 600; /* Đặt độ dày phông chữ */
+                text-align: center; /* Căn giữa văn bản */
+            }
+
+        /* --------------------------- Kiểu cho container cột khác --------------------------- */
+        .khung2 {
+            display: flex; /* Bật chế độ bố cục flexbox */
+            flex-direction: column; /* Sắp xếp các phần tử con theo chiều dọc */
+            gap: 8px; /* Thêm khoảng cách giữa các phần tử con */
+            flex: 1 0 0px; /* Cho phép container mở rộng và thu hẹp */
+            align-items: stretch; /* Kéo dài các phần tử con để lấp đầy chiều cao */
+        }
+
+        /* --------------------------- Kiểu cho khung tìm kiếm --------------------------- */
+        .khungtimkiem {
+            display: flex; /* Bật chế độ bố cục flexbox */
+            height: auto; /* Chiều cao tự động */
+            position: relative; /* Đặt vị trí tương đối */
+            z-index: 2; /* Đặt thứ tự xếp chồng */
+            align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+            padding: 0px; /* Không thêm khoảng cách bên trong */
+        }
+
+        /* Kiểu cho khung tìm kiếm nhỏ */
+        .khungtimkiem-min {
+            width: 100%; /* Đặt chiều rộng 100% */
+            display: flex; /* Bật chế độ bố cục flexbox */
+            position: relative; /* Đặt vị trí tương đối */
+            border: 1px solid rgb(221, 221, 227); /* Đặt viền xung quanh */
+            border-radius: 8px; /* Bo góc viền */
+            align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+        }
+
+            /* Kiểu cho biểu tượng trong khung tìm kiếm */
+            .khungtimkiem-min i {
+                width: 20px; /* Đặt chiều rộng cho biểu tượng */
+                height: 20px; /* Đặt chiều cao cho biểu tượng */
+                margin: 0px 0px 0px 18px; /* Thêm khoảng cách bên trái */
+            }
+
+        /* Kiểu cho input tìm kiếm */
+        .khung2 input {
+            border: 0px; /* Không viền */
+            padding: 0px 8px; /* Thêm khoảng cách bên trong */
+            font-weight: 400; /* Đặt độ dày phông chữ */
+            font-size: 14px; /* Đặt kích thước phông chữ */
+            line-height: 150%; /* Đặt chiều cao dòng */
+            border-top-left-radius: 8px; /* Bo góc bên trái trên */
+            border-bottom-left-radius: 8px; /* Bo góc bên trái dưới */
+            flex: 1 1 0%; /* Cho phép input mở rộng và thu hẹp */
+            outline: none; /* Không có viền ngoài khi được chọn */
+        }
+
+        /* Kiểu cho nút tìm kiếm */
+        .khung2 button {
+            cursor: pointer; /* Đổi con trỏ thành hình bàn tay khi di chuột qua */
+            border: 0px; /* Không viền */
+            width: 92px; /* Đặt chiều rộng cho nút */
+            height: 38px; /* Đặt chiều cao cho nút */
+            padding: 4px; /* Thêm khoảng cách bên trong */
+            border-radius: 0px 8px 8px 0px; /* Bo góc bên phải */
+            background: transparent; /* Nền trong suốt */
+            color: rgb(10, 104, 255); /* Đặt màu chữ */
+            font-weight: 400; /* Đặt độ dày phông chữ */
+            font-size: 14px; /* Đặt kích thước phông chữ */
+            line-height: 150%; /* Đặt chiều cao dòng */
+            outline: none; /* Không có viền ngoài khi được chọn */
+            display: flex; /* Bật chế độ bố cục flexbox */
+            align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+            justify-content: center; /* Căn giữa các phần tử con theo chiều ngang */
+            position: relative; /* Đặt vị trí tương đối */
+        }
+
+        /* Kiểu cho hình ảnh trong khung tìm kiếm */
+        .khung2 img {
+            width: 20px; /* Đặt chiều rộng cho hình ảnh */
+            height: 20px; /* Đặt chiều cao cho hình ảnh */
+            margin: 0px 0px 0px 18px; /* Thêm khoảng cách bên trái */
+        }
+
+        /* --------------------------- Kiểu cho khung chứa trang chủ tài khoản --------------------------- */
+        .khungtotrangchotaikhoan {
+            display: flex; /* Bật chế độ bố cục flexbox */
+            align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+            justify-content: flex-end; /* Căn phải các phần tử con */
+            margin-left: 48px; /* Thêm khoảng cách bên trái */
+        }
+
+        /* --------------------------- Kiểu cho khung chứa trang chủ tài khoản --------------------------- */
+        .khungtrangchutaikhoan {
+            display: flex; /* Bật chế độ bố cục flexbox */
+            align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+            justify-content: flex-end; /* Căn phải các phần tử con */
+            margin-left: 48px; /* Thêm khoảng cách bên trái */
+        }
+
+            /* Kiểu cho biểu tượng trong khung trang chủ tài khoản */
+            .khungtrangchutaikhoan i {
+                width: 24px; /* Đặt chiều rộng cho biểu tượng */
+                height: 24px; /* Đặt chiều cao cho biểu tượng */
+                margin-right: 4px; /* Thêm khoảng cách bên phải */
+                border-radius: 50%; /* Bo góc thành hình tròn */
+            }
+
+        /* Kiểu cho nút trang chủ */
+        .trangchu {
+            display: flex; /* Bật chế độ bố cục flexbox */
+            align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+            justify-content: center; /* Căn giữa các phần tử con theo chiều ngang */
+            padding: 8px 16px; /* Thêm khoảng cách bên trong */
+            cursor: pointer; /* Đổi con trỏ thành hình bàn tay khi di chuột qua */
+            position: relative; /* Đặt vị trí tương đối */
+            border-radius: 8px; /* Bo góc cho nút */
+        }
+
+            /* Kiểu cho hình ảnh trong nút trang chủ */
+            .trangchu img {
+                width: 24px; /* Đặt chiều rộng cho hình ảnh */
+                height: 24px; /* Đặt chiều cao cho hình ảnh */
+                margin-right: 4px; /* Thêm khoảng cách bên phải */
+                border-radius: 50%; /* Bo góc thành hình tròn */
+            }
+
+            /* Kiểu cho liên kết trong nút trang chủ */
+            .trangchu a {
+                font-weight: 400; /* Đặt độ dày phông chữ */
+                font-size: 14px; /* Đặt kích thước phông chữ */
+                line-height: 150%; /* Đặt chiều cao dòng */
+                color: rgb(128, 128, 137); /* Đặt màu chữ */
+            }
+
+        /* --------------------------- Kiểu cho hình ảnh trong gói hàng --------------------------- */
+        .goihang img {
+            position: relative; /* Đặt vị trí tương đối */
+            display: flex; /* Bật chế độ bố cục flexbox */
+            width: 40px; /* Đặt chiều rộng cho hình ảnh */
+            height: 40px; /* Đặt chiều cao cho hình ảnh */
+            align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+            justify-content: center; /* Căn giữa các phần tử con theo chiều ngang */
+        }
+
+        /* --------------------------- Kiểu cho khung dưới tìm kiếm --------------------------- */
+        .khungduoitimkiem {
+            position: relative; /* Đặt vị trí tương đối */
+            display: flex; /* Bật chế độ bố cục flexbox */
+            justify-content: space-between; /* Căn giữa các phần tử con với khoảng cách đều */
+            z-index: 1; /* Đặt thứ tự xếp chồng */
+        }
+
+        /* --------------------------- Kiểu cho danh sách giá --------------------------- */
+        .diengiadung {
+            display: flex; /* Bật chế độ bố cục flexbox */
+            height: 24px; /* Đặt chiều cao cố định */
+            width: 712px; /* Đặt chiều rộng cố định */
+            align-items: flex-start; /* Căn các phần tử con ở đầu trục chéo */
+            flex-wrap: wrap; /* Cho phép các phần tử con xuống dòng */
+            overflow: hidden; /* Ẩn các phần tử con vượt quá chiều cao */
+            gap: 12px; /* Thêm khoảng cách giữa các phần tử con */
+        }
+
+            /* Kiểu cho liên kết trong danh sách giá */
+            .diengiadung a {
+                display: block; /* Đặt liên kết thành khối */
+                font-weight: 400; /* Đặt độ dày phông chữ */
+                font-size: 14px; /* Đặt kích thước phông chữ */
+                line-height: 150%; /* Đặt chiều cao dòng */
+                color: rgb(128, 128, 137); /* Đặt màu chữ */
+                white-space: nowrap; /* Ngăn cách xuống dòng */
+            }
+
+        /* --------------------------- Kiểu cho vị trí --------------------------- */
+        .vitri {
+            display: flex; /* Bật chế độ bố cục flexbox */
+            align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+            cursor: pointer; /* Đổi con trỏ thành hình bàn tay khi di chuột qua */
+            justify-content: flex-end; /* Căn phải các phần tử con */
+        }
+
+            /* Kiểu cho hình ảnh trong vị trí */
+            .vitri img {
+                width: 20px; /* Đặt chiều rộng cho hình ảnh */
+                height: 20px; /* Đặt chiều cao cho hình ảnh */
+                margin-right: 4px; /* Thêm khoảng cách bên phải */
+            }
+
+            /* Kiểu cho liên kết trong vị trí */
+            .vitri a {
+                margin: 0px; /* Đặt khoảng cách bên ngoài bằng 0 */
+                display: block; /* Đặt liên kết thành khối */
+                color: rgb(128, 128, 137); /* Đặt màu chữ */
+                font-weight: 400; /* Đặt độ dày phông chữ */
+                font-size: 14px; /* Đặt kích thước phông chữ */
+                line-height: 150%; /* Đặt chiều cao dòng */
+                padding-right: 4px; /* Thêm khoảng cách bên phải */
+                white-space: nowrap; /* Ngăn cách xuống dòng */
+            }
+
+            /* Kiểu cho div bên trong vị trí */
+            .vitri div {
+                text-decoration: underline; /* Gạch chân văn bản */
+                font-weight: 500; /* Đặt độ dày phông chữ */
+                font-size: 14px; /* Đặt kích thước phông chữ */
+                line-height: 150%; /* Đặt chiều cao dòng */
+                white-space: nowrap; /* Ngăn cách xuống dòng */
+                overflow: hidden; /* Ẩn các phần tử con vượt quá chiều cao */
+                text-overflow: ellipsis; /* Hiển thị dấu ba chấm cho văn bản quá dài */
+                color: rgb(39, 39, 42); /* Đặt màu chữ */
+            }
+
+        /* --------------------------- Kiểu cho phần cam kết --------------------------- */
+        .CAMKET {
+            position: relative; /* Đặt vị trí tương đối */
+            z-index: 1; /* Đặt thứ tự xếp chồng */
+            display: flex; /* Bật chế độ bố cục flexbox */
+            flex-direction: row; /* Sắp xếp các phần tử con theo hàng ngang */
+            align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+            padding: 12px 0px; /* Thêm khoảng cách bên trong */
+            gap: 4px; /* Thêm khoảng cách giữa các phần tử con */
+            background: white; /* Đặt màu nền cho phần tử */
+            border-width: 1px 0px; /* Đặt độ dày viền */
+            border-style: solid; /* Đặt kiểu viền */
+            border-color: rgb(235, 235, 240); /* Đặt màu viền */
+        }
+
+        /* Kiểu cho container của cam kết */
+        .camket-min {
+            width: 1280px; /* Đặt chiều rộng cố định cho container */
+            padding-left: 24px; /* Thêm khoảng cách bên trái */
+            padding-right: 24px; /* Thêm khoảng cách bên phải */
+            margin-right: auto; /* Căn giữa container theo chiều ngang */
+            margin-left: auto; /* Căn giữa container theo chiều ngang */
+            display: flex; /* Bật chế độ bố cục flexbox */
+            gap: 12px; /* Thêm khoảng cách giữa các phần tử con */
+            padding-inline: 24px; /* Thêm khoảng cách bên trái và bên phải */
+        }
+
+            /* Kiểu cho văn bản trong cam kết */
+            .camket-min .camket {
+                font-size: 14px; /* Đặt kích thước phông chữ cho văn bản */
+                font-weight: 600; /* Đặt độ dày phông chữ */
+                line-height: 150%; /* Đặt chiều cao dòng */
+                white-space: nowrap; /* Ngăn cách xuống dòng */
+            }
+
+        /* --------------------------- Kiểu cho khung chứa 6 phần --------------------------- */
+        .cho6khung {
+            display: flex; /* Bật chế độ bố cục flexbox */
+            gap: 12px; /* Thêm khoảng cách giữa các phần tử con */
+            align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+        }
+
+            /* Kiểu cho nhóm khung 5 trong khung 6 */
+            .cho6khung .gop5khung {
+                display: flex; /* Bật chế độ bố cục flexbox */
+                gap: 4px; /* Thêm khoảng cách giữa các phần tử con */
+                padding-inline: 6px; /* Thêm khoảng cách bên trái và bên phải */
+                align-items: center; /* Căn giữa các phần tử con theo chiều dọc */
+            }
+
+        /* --------------------------- Kiểu cho hình ảnh 100% --------------------------- */
+        .img100 {
+            object-fit: contain; /* Giữ tỉ lệ khung hình cho hình ảnh */
+            display: block; /* Đặt hình ảnh thành khối */
+            width: 20px; /* Đặt chiều rộng cho hình ảnh */
+            height: 20px; /* Đặt chiều cao cho hình ảnh */
+        }
+
+        /* --------------------------- Kiểu cho đường kẻ ngang --------------------------- */
+        .gachngang {
+            width: 1px; /* Đặt chiều rộng cho đường kẻ */
+            height: 20px; /* Đặt chiều cao cho đường kẻ */
+            background: #EBEBF0; /* Đặt màu nền cho đường kẻ */
+        }
+
+        /* --------------------------- Phần header --------------------------- */
+        .header {
+            position: relative; /* Đặt vị trí tương đối */
+            background: rgb(255, 255, 255); /* Đặt màu nền cho header */
+            padding: 8px 0px; /* Thêm khoảng cách bên trong */
+            z-index: 999; /* Đặt thứ tự xếp chồng cao nhất */
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="container">
+            <div class="tude" style="color:darkgreen;">
+                Freeship đơn từ 45k, giảm nhiều đơn hàng cùng
+                <img src="~/Content/anh/anhtude.png" class="imgtude" />
+            </div>
+        </div>
+        <div class="header">
+            <div class="giua">
+                <div class="gop2khung">
+                    <div class="khung1">
+                        <img src="~/Content/anh/tikitren.png"  />
+                        <span> Tốt & nhanh </span>
+                    </div>
+                    <!------------------->
+                    <div class="khung2">
+                        <div class="khungtimkiem">
+                            <div class="khungtimkiem-min">
+                                <i class="fas fa-search"> </i>      
+                                <input type="text" placeholder="Freeship đơn từ 45k " />
+                                <button> Tìm Kiếm </button>
+                            </div>
+
+                            <div class="khungtotrangchotaikhoan">
+                                <div class="khungtrangchutaikhoan">
+                                    <div class="trangchu">
+                                        <i class="fas fa-home"></i>
+                                        <a>Trang chủ </a>
+                                    </div>
+                                </div>
+
+                                <div class="khungtrangchutaikhoan">
+                                    <div class="trangchu">
+                                        <i class="fas fa-smile"></i>
+                                        <a>Tài khoản </a>
+                                    </div>
+                                </div>
+
+                                <div class="goihang">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------khung duoi---------------->
+                        <div class="khungduoitimkiem">
+                            <div class="diengiadung">
+                                <a> Điện gia dụng </a>
+                                <a> Xe cộ </a>
+                                <a> mẹ & bé </a>
+                                <a> Khỏe đẹp </a>
+                                <a> Nhà cửa </a>
+                                <a> Sách </a>
+                                <a> Thể thao </a>
+                                <a> ensure gold </a>
+                                <a> ensure Nước </a>
+                                <a> boost oprimun </a>
+                            </div>
+                            <div class="vitri">
+                                <img src="~/Content/anh/vitri.png" />
+                                <a> Giao đến </a>
+                                <div> Q. 1, P. Bến Nghé, Hồ Chí Minh </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------------------>
+        <div class="CAMKET">
+            <a class="camket-min">
+                <div class="camket"> Cam Kết </div>
+                <div class="cho6khung">
+                    <div class="gop5khung">
+                        <img src="~/Content/anh/mottramphantram.png" class="img100" />
+                        <div> 100% hàng thật </div>
+                        <div class="gachngang"> </div>
+                    </div>
+                    <div class="gop5khung">
+                        <img src="~/Content/anh/hoan tien.png" class="img100" />
+                        <div> Hoàn 200% nếu hàng giả </div>
+                        <div class="gachngang"></div>
+                    </div>
+                    <div class="gop5khung">
+                        <img src="~/Content/anh/đổi trả.png" class="img100" />
+                        <div> 30 ngày đổi trả </div>
+                        <div class="gachngang"></div>
+                    </div>
+                    <div class="gop5khung">
+                        <img src="~/Content/anh/giao nhanh.png" class="img100" />
+                        <div> Giao nhanh 2h </div>
+                        <div class="gachngang"></div>
+                    </div>
+                    <div class="gop5khung">
+                        <img src="~/Content/anh/giá.png" class="img100" />
+                        <div> Giá siêu rẻ </div>
+                    </div> <div class="gachngang"></div>
+                    <div class="gop5khung">
+                        <img src="~/Content/anh/freeship.png" class="img100" />
+                        <div> Freeship mọi đơn </div>
+                    </div>
+                </div>
+            </a>
+        </div>   
+          
+
+
+    </header>
+    <section>
+        <div>
+            @RenderBody()
+        </div>
+    </section>
+    <footer>
+
+    </footer>
+  
+
+</body>
+</html>

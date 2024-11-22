@@ -1,0 +1,1054 @@
+﻿@{
+    Layout = "~/Views/Shared/Dau.cshtml";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Sản Phẩm</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .main {
+            display: block; /* Thiết lập phần tử .main thành một khối, có chiều rộng đầy đủ. */
+            unicode-bidi: isolate; /* Đảm bảo văn bản không bị ảnh hưởng bởi định dạng văn bản khác trong cùng một khối. */
+        }
+
+        .khungto {
+            width: 1280px; /* Đặt chiều rộng của khung là 1280px. */
+            padding-left: 24px; /* Thêm khoảng đệm 24px ở bên trái. */
+            padding-right: 24px; /* Thêm khoảng đệm 24px ở bên phải. */
+            margin-right: auto; /* Tự động căn giữa khung theo chiều ngang bên phải. */
+            margin-left: auto; /* Tự động căn giữa khung theo chiều ngang bên trái. */
+        }
+
+        .khung4o {
+            background-color: rgb(245, 245, 250); /* Đặt màu nền cho khung là màu xám nhạt. */
+        }
+
+        .khung5o .min-khung5o {
+            display: flex; /* Thiết lập phần tử con trong khung 5 thành Flexbox, giúp sắp xếp phần tử dễ dàng hơn. */
+            -webkit-box-align: center; /* Căn giữa theo chiều dọc (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn giữa phần tử con theo chiều dọc. */
+        }
+
+        .min-khung5o span {
+            position: relative; /* Định vị tương đối, cho phép sử dụng các thuộc tính định vị bên trong. */
+            display: flex; /* Sử dụng Flexbox để dễ dàng căn chỉnh phần tử bên trong. */
+            -webkit-box-pack: center; /* Căn giữa theo chiều ngang (công cụ cũ cho trình duyệt). */
+            justify-content: center; /* Căn giữa phần tử theo chiều ngang. */
+            -webkit-box-align: center; /* Căn giữa theo chiều dọc (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn giữa phần tử theo chiều dọc. */
+            height: 40px; /* Đặt chiều cao của phần tử là 40px. */
+            color: rgb(128, 128, 137); /* Đặt màu chữ cho phần tử. */
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            line-height: 20px; /* Chiều cao dòng là 20px, giúp tạo khoảng cách giữa các dòng chữ. */
+            font-weight: 300; /* Độ dày của chữ là 300 (mỏng). */
+            white-space: nowrap; /* Không cho phép chữ xuống dòng, đảm bảo tất cả chữ nằm trên một dòng. */
+        }
+
+        .span5o {
+            color: rgb(128, 128, 137); /* Đặt màu chữ cho phần tử. */
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            line-height: 20px; /* Chiều cao dòng là 20px. */
+            font-weight: 300; /* Độ dày của chữ là 300 (mỏng). */
+            white-space: nowrap; /* Không cho phép chữ xuống dòng. */
+        }
+
+        .muiten {
+            width: 20px; /* Đặt chiều rộng của biểu tượng mũi tên là 20px. */
+            height: 20px; /* Đặt chiều cao của biểu tượng mũi tên là 20px. */
+        }
+
+        /* <!------------------------------------------>*/
+        /* <!------------------------------------------>*/
+        /* <!------------------------------------------>*/
+        /* <!------------------------------------------>*/
+        /* <!------------------------------------------>*/
+        .khungcua3to {
+            width: 1280px; /* Đặt chiều rộng của khung là 1280px. */
+            padding-left: 24px; /* Thêm khoảng đệm 24px ở bên trái. */
+            padding-right: 24px; /* Thêm khoảng đệm 24px ở bên phải. */
+            margin-right: auto; /* Tự động căn giữa khung theo chiều ngang bên phải. */
+            margin-left: auto; /* Tự động căn giữa khung theo chiều ngang bên trái. */
+        }
+
+        .min-khung1 {
+            display: grid; /* Sử dụng grid layout để sắp xếp các phần tử bên trong. */
+            grid-template-columns: 400px 1fr; /* Định nghĩa lưới với 2 cột: cột đầu tiên 400px và cột thứ hai chiếm phần còn lại. */
+            gap: 24px; /* Đặt khoảng cách giữa các cột là 24px. */
+            border-radius: 8px; /* Bo tròn góc của khung. */
+            -webkit-box-align: start; /* Căn chỉnh phần tử theo chiều dọc bắt đầu (công cụ cũ cho trình duyệt). */
+            align-items: start; /* Căn chỉnh phần tử theo chiều dọc bắt đầu. */
+        }
+
+            .min-khung1 .min-min-khung1 {
+                display: flex; /* Sử dụng Flexbox cho phần tử con. */
+                flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc. */
+                width: 400px; /* Đặt chiều rộng của khung con là 400px. */
+                background: white; /* Đặt màu nền cho khung con là trắng. */
+                position: sticky; /* Định vị phần tử để nó dính vào vị trí khi cuộn trang. */
+                top: 12px; /* Khoảng cách từ đỉnh viewport đến phần tử dính. */
+                gap: 16px; /* Khoảng cách giữa các phần tử bên trong khung con. */
+                padding: 16px 0px 12px 0px; /* Thêm khoảng đệm bên trong: 16px ở trên, 0px ở hai bên, 12px ở dưới. */
+            }
+
+        .lonsuato {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+            padding: 0px 16px; /* Thêm khoảng đệm bên trong: 0px ở trên và dưới, 16px ở hai bên. */
+            border: 1px solid rgb(235, 235, 240); /* Đặt viền cho phần tử. */
+            gap: 8px; /* Khoảng cách giữa các phần tử bên trong. */
+            transform: translateX(0px); /* Thiết lập vị trí theo trục X, mặc định là 0. */
+            transition: 0.5s ease-in-out; /* Thiết lập hiệu ứng chuyển tiếp cho các thay đổi thuộc tính trong 0.5 giây. */
+        }
+
+            .lonsuato img {
+                width: 368px; /* Đặt chiều rộng của hình ảnh là 368px. */
+                height: 368px; /* Đặt chiều cao của hình ảnh là 368px. */
+                z-index: 2; /* Đặt chỉ số z để hình ảnh nằm trên các phần tử khác nếu có chồng chéo. */
+                opacity: 1; /* Đặt độ mờ của hình ảnh là 1 (hoàn toàn không trong suốt). */
+            }
+
+        /*<!------------------------------------------>*/
+
+        .khung4o {
+            overflow: hidden; /* Kiểm soát cách hiển thị nội dung vượt quá kích thước của phần tử. */
+        }
+
+        .min-khung4o {
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử bên trong là 8px. */
+            transform: translateX(0px); /* Thiết lập vị trí theo trục X, mặc định là 0. */
+            transition: 0.5s ease-in-out; /* Thiết lập hiệu ứng chuyển tiếp cho các thay đổi thuộc tính trong 0.5 giây. */
+        }
+
+            .min-khung4o img {
+                cursor: pointer; /* Hiển thị con trỏ tay khi di chuột qua hình ảnh, cho thấy hình ảnh có thể tương tác. */
+                position: relative; /* Định vị tương đối, cho phép sử dụng các thuộc tính định vị bên trong. */
+                display: inline-block; /* Hiển thị hình ảnh như một khối inline, cho phép thêm khoảng cách. */
+                width: 54px; /* Đặt chiều rộng của hình ảnh là 54px. */
+                height: 54px; /* Đặt chiều cao của hình ảnh là 54px. */
+                padding: 4px; /* Thêm khoảng đệm bên trong là 4px. */
+                border-radius: 4px; /* Bo tròn góc của hình ảnh. */
+                border: 1px solid rgb(235, 235, 240); /* Đặt viền cho hình ảnh. */
+                overflow: hidden; /* Ẩn nội dung vượt quá kích thước của hình ảnh. */
+            }
+
+        /*<!------------------------------------------>*/
+
+        .khungxemthem {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            -webkit-box-pack: justify; /* Căn chỉnh các phần tử theo chiều ngang (công cụ cũ cho trình duyệt). */
+            justify-content: space-between; /* Căn chỉnh các phần tử sao cho có khoảng cách đều nhau. */
+            -webkit-box-align: center; /* Căn chỉnh các phần tử theo chiều dọc (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh các phần tử theo chiều dọc. */
+            cursor: pointer; /* Hiển thị con trỏ tay khi di chuột qua phần tử, cho thấy phần tử có thể tương tác. */
+            border-top: 1px solid rgb(235, 235, 240); /* Đặt viền trên cho phần tử. */
+            padding: 12px 16px 0px; /* Thêm khoảng đệm bên trong: 12px ở trên, 16px ở hai bên, 0px ở dưới. */
+        }
+
+        .khungiconxemthem {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            -webkit-box-pack: justify; /* Căn chỉnh các phần tử theo chiều ngang (công cụ cũ cho trình duyệt). */
+            justify-content: space-between; /* Căn chỉnh các phần tử sao cho có khoảng cách đều nhau. */
+            -webkit-box-align: center; /* Căn chỉnh các phần tử theo chiều dọc (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh các phần tử theo chiều dọc. */
+        }
+
+        .khungxemthem img {
+            margin-right: 8px; /* Thêm khoảng cách bên phải cho hình ảnh là 8px. */
+            height: 24px; /* Đặt chiều cao của hình ảnh là 24px. */
+        }
+
+        .min-khungiconxemthem {
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            font-weight: 400; /* Độ dày của chữ là 400. */
+            line-height: 21px; /* Chiều cao dòng là 21px, giúp tạo khoảng cách giữa các dòng chữ. */
+            color: rgb(39, 39, 42); /* Đặt màu chữ cho phần tử. */
+            overflow: hidden; /* Ẩn nội dung vượt quá kích thước của phần tử. */
+            display: -webkit-box; /* Hiển thị như một khối (công cụ cũ cho trình duyệt). */
+            -webkit-line-clamp: 2; /* Giới hạn số dòng hiển thị là 2. */
+            -webkit-box-orient: vertical; /* Định hướng khối theo chiều dọc. */
+        }
+
+            .min-khungiconxemthem span {
+                color: darkgrey; /* Đặt màu chữ cho span bên trong là xám tối. */
+            }
+
+        /* <!------------------------------------------>*/
+        /* <!------------------------------------------>*/
+        /* <!------------------------------------------>*/
+        /* <!------------------------------------------>*/
+        /* <!------------------------------------------>*/
+        .min-khung2 {
+            display: grid; /* Sử dụng grid layout để sắp xếp các phần tử bên trong. */
+            grid-template-columns: 100%; /* Định nghĩa lưới với 1 cột, chiếm 100% chiều rộng. */
+            gap: 16px; /* Đặt khoảng cách giữa các phần tử là 16px. */
+            /* display: flex; 
+       flex-direction: column; 
+       gap: 16px; */
+            /* Ghi chú: Các thuộc tính này đã bị bình luận và sẽ không được áp dụng. */
+        }
+
+        .min-khung2-1 {
+            display: flex; /* Sử dụng Flexbox cho phần tử con. */
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc. */
+            background: white; /* Đặt màu nền cho khung con là trắng. */
+            border-radius: 8px; /* Bo tròn góc của khung con. */
+            padding: 16px; /* Thêm khoảng đệm bên trong là 16px. */
+            gap: 4px; /* Đặt khoảng cách giữa các phần tử bên trong là 4px. */
+        }
+
+        .khungthongtin {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+            -webkit-box-align: center; /* Căn chỉnh theo chiều dọc ở giữa (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+            flex-wrap: wrap; /* Cho phép phần tử bao bọc nếu không đủ không gian. */
+        }
+
+            .khungthongtin img {
+                width: 114px; /* Đặt chiều rộng cho hình ảnh là 114px. */
+                height: 20px; /* Đặt chiều cao cho hình ảnh là 20px. */
+                opacity: 1; /* Đặt độ mờ của hình ảnh là 1 (hoàn toàn không trong suốt). */
+            }
+
+            .khungthongtin h6 {
+                margin: 0px; /* Xóa khoảng cách mặc định ở trên và dưới. */
+                color: rgb(36, 36, 36); /* Đặt màu chữ là màu xám tối. */
+                font-size: 13px; /* Kích thước chữ là 13px. */
+                font-weight: 400; /* Độ dày của chữ là 400. */
+                line-height: 20px; /* Chiều cao dòng là 20px, giúp tạo khoảng cách giữa các dòng. */
+            }
+
+        .min-khung2-1 h1 {
+            margin: 0px; /* Xóa khoảng cách mặc định ở trên và dưới. */
+            color: rgb(39, 39, 42); /* Đặt màu chữ là xám tối. */
+            font-size: 20px; /* Kích thước chữ là 20px. */
+            font-weight: 500; /* Độ dày của chữ là 500. */
+            line-height: 150%; /* Chiều cao dòng là 150% của kích thước chữ. */
+            word-break: break-word; /* Ngắt từ nếu không vừa với dòng. */
+            white-space: break-spaces; /* Ngắt dòng khi gặp khoảng trắng. */
+        }
+
+        .khungdanhgia {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            -webkit-box-align: center; /* Căn chỉnh theo chiều dọc ở giữa (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+            -webkit-box-pack: justify; /* Căn chỉnh theo chiều ngang (công cụ cũ cho trình duyệt). */
+            justify-content: space-between; /* Căn chỉnh các phần tử sao cho có khoảng cách đều nhau. */
+        }
+
+        .khung5-0 {
+            margin-right: 4px; /* Thêm khoảng cách bên phải là 4px. */
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+            font-weight: 500; /* Độ dày của chữ là 500. */
+        }
+
+        .chumo {
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            line-height: 24px; /* Chiều cao dòng là 24px. */
+            color: rgb(120, 120, 120); /* Đặt màu chữ là màu xám. */
+        }
+
+        .madeinspain {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-direction: row; /* Sắp xếp các phần tử theo chiều ngang. */
+        }
+
+            .madeinspain span {
+                position: relative; /* Định vị tương đối, cho phép sử dụng các thuộc tính định vị bên trong. */
+                display: flex; /* Sử dụng Flexbox cho phần tử. */
+                gap: 4px; /* Đặt khoảng cách giữa các phần tử là 4px. */
+                -webkit-box-align: center; /* Căn chỉnh theo chiều dọc ở giữa (công cụ cũ cho trình duyệt). */
+                align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+                color: var(--alias-secondary-on-theme, #808089); /* Đặt màu chữ, sử dụng biến CSS nếu có, nếu không sẽ là màu xám tối. */
+                border-right: 1px solid rgb(235, 235, 240); /* Đặt viền bên phải cho phần tử. */
+                padding-right: 8px; /* Thêm khoảng đệm bên phải là 8px. */
+                margin-right: 8px; /* Thêm khoảng cách bên phải là 8px. */
+                font-size: 12px; /* Kích thước chữ là 12px. */
+                font-style: normal; /* Đặt kiểu chữ là bình thường. */
+                font-weight: 400; /* Độ dày của chữ là 400. */
+                line-height: 150%; /* Chiều cao dòng là 150%. */
+            }
+
+        .khungsodo {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            -webkit-box-align: center; /* Căn chỉnh theo chiều dọc ở giữa (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+            color: rgb(39, 39, 42); /* Đặt màu chữ là xám tối. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+        }
+
+            .khungsodo img {
+                max-width: 100%; /* Hình ảnh sẽ không lớn hơn 100% chiều rộng của phần tử cha. */
+                height: 14px; /* Đặt chiều cao cho hình ảnh là 14px. */
+            }
+
+        .sodo {
+            font-size: 24px; /* Kích thước chữ là 24px. */
+            font-weight: 600; /* Độ dày của chữ là 600. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+        }
+
+        .giamgia {
+            font-weight: 400; /* Độ dày của chữ là 400. */
+            font-size: 12px; /* Kích thước chữ là 12px. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+            padding: 0px 4px; /* Thêm khoảng đệm bên trong: 0px ở trên và dưới, 4px ở hai bên. */
+            background: rgb(245, 245, 250); /* Đặt màu nền cho phần tử là màu xám sáng. */
+            border-radius: 8px; /* Bo tròn góc cho phần tử. */
+        }
+
+        .gachtien {
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            font-weight: 400; /* Độ dày của chữ là 400. */
+            line-height: 21px; /* Chiều cao dòng là 21px. */
+            color: rgb(128, 128, 137); /* Đặt màu chữ là xám nhạt. */
+        }
+
+        .khunghuongvi {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-wrap: wrap; /* Cho phép phần tử bao bọc nếu không đủ không gian. */
+            gap: 8px 12px; /* Đặt khoảng cách giữa các phần tử là 8px theo chiều dọc và 12px theo chiều ngang. */
+        }
+
+        .khungvani {
+            cursor: pointer; /* Hiển thị con trỏ tay khi di chuột qua phần tử, cho thấy phần tử có thể tương tác. */
+            display: block; /* Hiển thị như một khối. */
+            color: rgb(36, 36, 36); /* Đặt màu chữ là xám tối. */
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            font-style: normal; /* Đặt kiểu chữ là bình thường. */
+            font-weight: 500; /* Độ dày của chữ là 500. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+            position: relative; /* Định vị tương đối cho phần tử. */
+            background-color: white; /* Đặt màu nền là trắng. */
+            outline: 0px; /* Xóa đường viền khi phần tử được chọn. */
+            padding: 4px 16px; /* Thêm khoảng đệm bên trong: 4px trên và dưới, 16px hai bên. */
+            align-items: flex-start; /* Căn chỉnh các phần tử con ở đầu phần tử. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+        }
+
+        /*--------------------------------------------------*/
+        .min-khung2-2 {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc. */
+            background: white; /* Đặt màu nền cho khung là trắng. */
+            border-radius: 8px; /* Bo tròn góc cho khung. */
+            padding: 16px; /* Thêm khoảng đệm bên trong là 16px. */
+            gap: 4px; /* Đặt khoảng cách giữa các phần tử là 4px. */
+        }
+
+        .min-khung2-3 {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc. */
+            background: white; /* Đặt màu nền cho khung là trắng. */
+            border-radius: 8px; /* Bo tròn góc cho khung. */
+            padding: 16px; /* Thêm khoảng đệm bên trong là 16px. */
+            gap: 4px; /* Đặt khoảng cách giữa các phần tử là 4px. */
+        }
+
+        .thongtinvanchuyen {
+            font-weight: 600; /* Độ dày của chữ là 600. */
+            font-size: 16px; /* Kích thước chữ là 16px. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+            color: rgb(39, 39, 42); /* Đặt màu chữ là xám tối. */
+        }
+
+        .thongtingiaoden {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+            cursor: pointer; /* Hiển thị con trỏ tay khi di chuột qua phần tử. */
+            gap: 4px; /* Đặt khoảng cách giữa các phần tử là 4px. */
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            font-weight: 400; /* Độ dày của chữ là 400. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+            flex: 1; /* Cho phép phần tử này mở rộng để lấp đầy không gian. */
+            min-height: 21px; /* Chiều cao tối thiểu là 21px. */
+        }
+
+        .chuthongtingiaoden {
+            color: rgb(39, 39, 42); /* Đặt màu chữ là xám tối. */
+            overflow: hidden; /* Ẩn phần nội dung vượt quá kích thước của phần tử. */
+            display: -webkit-box; /* Sử dụng box layout cho WebKit. */
+            -webkit-box-orient: vertical; /* Đặt hướng cho box layout là dọc. */
+            -webkit-line-clamp: 1; /* Giới hạn số dòng hiển thị là 1. */
+            width: 100%; /* Đặt chiều rộng của phần tử là 100%. */
+        }
+
+        .giaosieutocvagiaodungsangmai {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc. */
+            flex: 1 1 0%; /* Cho phép phần tử này mở rộng và co lại theo nhu cầu. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+        }
+
+        .min-giaosieutocvagiaodungsangmai-1 {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc. */
+            gap: 2px; /* Đặt khoảng cách giữa các phần tử là 2px. */
+            position: relative; /* Định vị tương đối cho phần tử. */
+            margin-right: 12px; /* Thêm khoảng cách bên phải là 12px. */
+            z-index: 1; /* Đặt chỉ số z để đảm bảo phần tử nằm trên các phần tử khác. */
+            font-size: 13px; /* Kích thước chữ là 13px. */
+            line-height: 20px; /* Chiều cao dòng là 20px. */
+            color: rgb(120, 120, 120); /* Đặt màu chữ là màu xám. */
+            width: 100%; /* Đặt chiều rộng của phần tử là 100%. */
+            padding-bottom: 8px; /* Thêm khoảng đệm bên dưới là 8px. */
+            border-bottom: 1px solid rgb(235, 235, 240); /* Đặt viền bên dưới cho phần tử. */
+        }
+
+        .min-min-giaotocvagiaodungsangmai-1 {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            -webkit-box-align: center; /* Căn chỉnh theo chiều dọc ở giữa (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            font-style: normal; /* Đặt kiểu chữ là bình thường. */
+            font-weight: 500; /* Độ dày của chữ là 500. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+        }
+
+            .min-min-giaotocvagiaodungsangmai-1 img {
+                height: 17px; /* Đặt chiều cao cho hình ảnh là 17px. */
+                width: 32px; /* Đặt chiều rộng cho hình ảnh là 32px. */
+            }
+
+            .min-min-giaotocvagiaodungsangmai-1 span {
+                font-size: 14px; /* Kích thước chữ là 14px. */
+                line-height: 150%; /* Chiều cao dòng là 150%. */
+                color: rgb(39, 39, 42); /* Đặt màu chữ là xám tối. */
+                margin-left: 8px; /* Thêm khoảng cách bên trái là 8px. */
+            }
+
+        .truoc12h {
+            font-weight: 400; /* Độ dày của chữ là 400. */
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            line-height: 20px; /* Chiều cao dòng là 20px. */
+        }
+
+        .Freeship {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-direction: row; /* Sắp xếp các phần tử theo chiều ngang. */
+            -webkit-box-align: center; /* Căn chỉnh theo chiều dọc ở giữa (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+            padding: 8px 0px; /* Thêm khoảng đệm bên trên và dưới là 8px. */
+            border-bottom: 1px solid rgb(235, 235, 240); /* Đặt viền bên dưới cho phần tử. */
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+            font-weight: 400; /* Độ dày của chữ là 400. */
+            color: rgb(39, 39, 42); /* Đặt màu chữ là xám tối. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+        }
+
+        .Freeship {
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            font-weight: 500; /* Độ dày của chữ là 500. */
+            line-height: 21px; /* Chiều cao dòng là 21px. */
+            color: rgb(39, 39, 42); /* Đặt màu chữ là xám tối. */
+            white-space: break-spaces; /* Ngắt dòng khi gặp khoảng trắng. */
+            max-width: calc(100% - 24px); /* Đặt chiều rộng tối đa của phần tử. */
+        }
+
+            .Freeship img {
+                width: 18px; /* Đặt chiều rộng cho hình ảnh là 18px. */
+                height: 18px; /* Đặt chiều cao cho hình ảnh là 18px. */
+                opacity: 1; /* Đặt độ mờ của hình ảnh là 1 (hoàn toàn không trong suốt). */
+            }
+
+        .khungdichvubosung {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc. */
+            background: white; /* Đặt màu nền cho khung là trắng. */
+            border-radius: 8px; /* Bo tròn góc cho khung. */
+            padding: 16px; /* Thêm khoảng đệm bên trong là 16px. */
+            gap: 4px; /* Đặt khoảng cách giữa các phần tử là 4px. */
+        }
+
+            .khungdichvubosung span {
+                font-weight: 600; /* Độ dày của chữ là 600. */
+                font-size: 16px; /* Kích thước chữ là 16px. */
+                line-height: 150%; /* Chiều cao dòng là 150%. */
+                color: rgb(39, 39, 42); /* Đặt màu chữ là xám tối. */
+            }
+
+        .uudai-muatruoc {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-direction: row; /* Sắp xếp các phần tử theo chiều ngang. */
+            -webkit-box-align: center; /* Căn chỉnh theo chiều dọc ở giữa (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+            padding: 8px 0px; /* Thêm khoảng đệm bên trên và dưới là 8px. */
+            border-bottom: 1px solid rgb(235, 235, 240); /* Đặt viền bên dưới cho phần tử. */
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+            font-weight: 400; /* Độ dày của chữ là 400. */
+            color: rgb(39, 39, 42); /* Đặt màu chữ là xám tối. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+        }
+
+            .uudai-muatruoc img {
+                border-radius: 50%; /* Bo tròn hình ảnh. */
+                min-width: 40px; /* Đặt chiều rộng tối thiểu cho hình ảnh là 40px. */
+                width: 40px; /* Đặt chiều rộng cho hình ảnh là 40px. */
+                height: 40px; /* Đặt chiều cao cho hình ảnh là 40px. */
+                opacity: 1; /* Đặt độ mờ của hình ảnh là 1 (hoàn toàn không trong suốt). */
+            }
+
+        .khunguudai-muatruoc {
+            background-color: rgb(255, 255, 255); /* Đặt màu nền cho khung là trắng. */
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex: 1 1 0%; /* Cho phép phần tử này mở rộng và co lại theo nhu cầu. */
+            -webkit-box-pack: justify; /* Căn chỉnh phần tử bên trong. */
+            justify-content: space-between; /* Đặt khoảng cách đều giữa các phần tử bên trong. */
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            font-style: normal; /* Đặt kiểu chữ là bình thường. */
+            font-weight: 500; /* Độ dày của chữ là 500. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+            color: rgb(39, 39, 42); /* Đặt màu chữ là xám tối. */
+            -webkit-box-align: center; /* Căn chỉnh theo chiều dọc ở giữa (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+        }
+
+        .dangky {
+            color: rgb(10, 104, 255); /* Đặt màu chữ là xanh dương. */
+            font-weight: 400; /* Độ dày của chữ là 400. */
+            cursor: pointer; /* Hiển thị con trỏ tay khi di chuột qua phần tử. */
+        }
+
+        .min-khungcua3to {
+            display: grid; /* Sử dụng Grid layout cho phần tử. */
+            grid-template-columns: 1fr 360px; /* Chia phần tử thành 2 cột: một cột linh hoạt và một cột cố định 360px. */
+            gap: 24px; /* Đặt khoảng cách giữa các cột là 24px. */
+        }
+
+      
+        /*----------------------------------------*/
+        .danggia {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc. */
+            background: white; /* Đặt màu nền cho khung là trắng. */
+            border-radius: 8px; /* Bo tròn góc cho khung. */
+            padding: 16px; /* Thêm khoảng đệm bên trong là 16px. */
+            gap: 4px; /* Đặt khoảng cách giữa các phần tử là 4px. */
+        }
+
+        .loidangchia {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc. */
+            gap: 16px; /* Đặt khoảng cách giữa các phần tử là 16px. */
+        }
+
+        .min-danggia {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            padding-bottom: 12px; /* Thêm khoảng đệm bên dưới là 12px. */
+            -webkit-box-align: center; /* Căn chỉnh theo chiều dọc ở giữa (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+            border-bottom: 1px solid rgb(235, 235, 240); /* Đặt viền bên dưới cho phần tử. */
+            -webkit-box-pack: justify; /* Căn chỉnh phần tử bên trong. */
+            justify-content: space-between; /* Đặt khoảng cách đều giữa các phần tử bên trong. */
+        }
+
+        .min-danggia-1 {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+            height: 65px; /* Đặt chiều cao cho phần tử là 65px. */
+        }
+
+            .min-danggia-1 img {
+                border-radius: 50%; /* Bo tròn hình ảnh. */
+                min-width: 40px; /* Đặt chiều rộng tối thiểu cho hình ảnh là 40px. */
+                width: 40px; /* Đặt chiều rộng cho hình ảnh là 40px. */
+                height: 40px; /* Đặt chiều cao cho hình ảnh là 40px. */
+                opacity: 1; /* Đặt độ mờ của hình ảnh là 1 (hoàn toàn không trong suốt). */
+            }
+
+        .chiadoikhungmin-danggia-1 {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc. */
+            gap: 0px; /* Đặt khoảng cách giữa các phần tử là 0px. */
+        }
+
+            .chiadoikhungmin-danggia-1 span {
+                color: rgb(36, 36, 36); /* Đặt màu chữ là xám tối. */
+                overflow: hidden; /* Ẩn phần nội dung vượt quá kích thước của phần tử. */
+                display: -webkit-box; /* Sử dụng box layout cho WebKit. */
+                -webkit-box-orient: vertical; /* Đặt hướng cho box layout là dọc. */
+                -webkit-line-clamp: 1; /* Giới hạn số dòng hiển thị là 1. */
+            }
+
+        .chiaduoidoikhungmin-danggia-1 {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            -webkit-box-align: center; /* Căn chỉnh theo chiều dọc ở giữa (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+            align-content: flex-start; /* Căn chỉnh nội dung ở đầu. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+            align-self: stretch; /* Đặt phần tử này kéo dài hết chiều cao của phần tử chứa. */
+        }
+
+            .chiaduoidoikhungmin-danggia-1 img {
+                width: 72px; /* Đặt chiều rộng cho hình ảnh là 72px. */
+                height: 20px; /* Đặt chiều cao cho hình ảnh là 20px. */
+                min-width: 72px; /* Đặt chiều rộng tối thiểu cho hình ảnh là 72px. */
+                min-height: 20px; /* Đặt chiều cao tối thiểu cho hình ảnh là 20px. */
+                opacity: 1; /* Đặt độ mờ của hình ảnh là 1 (hoàn toàn không trong suốt). */
+            }
+
+        .min-chiaduoidoikhungmin-danggia-1 {
+            flex-shrink: 0; /* Không cho phần tử này co lại. */
+        }
+
+        .chiadoi {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            -webkit-box-align: center; /* Căn chỉnh theo chiều dọc ở giữa (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+            gap: 4px; /* Đặt khoảng cách giữa các phần tử là 4px. */
+        }
+
+            .chiadoi span {
+                font-size: 14px; /* Kích thước chữ là 14px. */
+                font-style: normal; /* Đặt kiểu chữ là bình thường. */
+                font-weight: 500; /* Độ dày của chữ là 500. */
+                line-height: 150%; /* Chiều cao dòng là 150%. */
+            }
+
+        .chumo {
+            color: rgb(128, 128, 137); /* Đặt màu chữ là xám nhạt. */
+            text-align: center; /* Căn giữa chữ. */
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            font-style: normal; /* Đặt kiểu chữ là bình thường. */
+            font-weight: 400; /* Độ dày của chữ là 400. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+        }
+
+        .khungsoluong {
+            display: grid; /* Sử dụng Grid layout cho phần tử. */
+            grid-template-columns: 1fr; /* Chia phần tử thành một cột. */
+            gap: 8px; /* Đặt khoảng cách giữa các cột là 8px. */
+        }
+
+        .soluong {
+            font-size: 14px; /* Kích thước chữ là 14px. */
+            font-style: normal; /* Đặt kiểu chữ là bình thường. */
+            font-weight: 600; /* Độ dày của chữ là 600. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+            margin: 0px; /* Đặt lề là 0. */
+        }
+
+        .congtru {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            -webkit-box-align: center; /* Căn chỉnh theo chiều dọc ở giữa (công cụ cũ cho trình duyệt). */
+            align-items: center; /* Căn chỉnh theo chiều dọc ở giữa. */
+        }
+
+        /*------------- khung tăng tiền ----------------------------*/
+
+        .quantity-selector {
+            display: flex; /* Sử dụng Flexbox để sắp xếp các phần tử con theo hàng. */
+            align-items: center; /* Căn giữa các phần tử con theo chiều dọc. */
+            font-family: Arial, sans-serif; /* Sử dụng font Arial hoặc font sans-serif thay thế. */
+            margin-bottom: 20px; /* Thêm khoảng cách bên dưới khối này là 20px. */
+        }
+
+            .quantity-selector button, .quantity-selector input {
+                width: 40px; /* Đặt chiều rộng cho nút và input là 40px. */
+                height: 40px; /* Đặt chiều cao cho nút và input là 40px. */
+                font-size: 16px; /* Kích thước chữ cho nút và input là 16px. */
+                text-align: center; /* Căn giữa nội dung bên trong. */
+            }
+
+            .quantity-selector input {
+                border: 1px solid #ccc; /* Đặt viền cho input với màu xám nhạt. */
+                text-align: center; /* Căn giữa nội dung bên trong. */
+            }
+
+            .quantity-selector button {
+                background-color: #f0f0f0; /* Đặt màu nền cho nút là xám nhạt. */
+                border: 1px solid #ccc; /* Đặt viền cho nút với màu xám nhạt. */
+                cursor: pointer; /* Hiển thị con trỏ dạng tay khi di chuột qua nút. */
+            }
+
+                .quantity-selector button:hover {
+                    background-color: #e0e0e0; /* Thay đổi màu nền khi di chuột qua nút. */
+                }
+
+        .label {
+            margin-right: 10px; /* Thêm khoảng cách bên phải cho nhãn. */
+        }
+
+        .price {
+            font-size: 18px; /* Kích thước chữ cho giá là 18px. */
+        }
+
+        /*---------------------------------------------------------*/
+
+        .tamtinh {
+            display: grid; /* Sử dụng Grid layout cho phần tử. */
+            grid-template-columns: 1fr; /* Chia phần tử thành một cột. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+        }
+
+            .tamtinh a {
+                font-size: 16px; /* Kích thước chữ cho liên kết là 16px. */
+                font-style: normal; /* Đặt kiểu chữ là bình thường. */
+                font-weight: 600; /* Độ dày của chữ là 600. */
+                line-height: 150%; /* Chiều cao dòng là 150%. */
+                color: rgb(39, 39, 42); /* Đặt màu chữ cho liên kết là xám tối. */
+            }
+
+        .khungtien {
+            font-size: 24px; /* Kích thước chữ cho khung tiền là 24px. */
+            font-style: normal; /* Đặt kiểu chữ là bình thường. */
+            font-weight: 600; /* Độ dày của chữ là 600. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+        }
+
+        .khungmuangaythemvaogiotrasau {
+            display: grid; /* Sử dụng Grid layout cho phần tử. */
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Tạo cột linh hoạt, mỗi cột có chiều rộng tối thiểu 180px. */
+            gap: 8px; /* Đặt khoảng cách giữa các cột là 8px. */
+        }
+
+        .khungmuangay {
+            background: rgb(255, 66, 78); /* Đặt màu nền cho nút là đỏ. */
+            border-radius: 4px; /* Bo tròn góc cho nút. */
+            border: none; /* Không viền cho nút. */
+            cursor: pointer; /* Hiển thị con trỏ dạng tay khi di chuột qua nút. */
+            font-weight: 300; /* Độ dày của chữ là 300. */
+            display: flex; /* Sử dụng Flexbox cho nút. */
+            justify-content: center; /* Căn giữa nội dung bên trong. */
+            align-items: center; /* Căn giữa nội dung theo chiều dọc. */
+            padding: 8px; /* Thêm khoảng đệm bên trong là 8px. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+            white-space: nowrap; /* Ngăn không cho văn bản xuống dòng. */
+            color: rgb(255, 255, 255); /* Đặt màu chữ cho nút là trắng. */
+            height: 40px; /* Đặt chiều cao cho nút là 40px. */
+            font-size: 16px; /* Kích thước chữ cho nút là 16px. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+        }
+
+            .khungmuangay span {
+                display: -webkit-box; /* Sử dụng box layout cho WebKit. */
+                -webkit-box-orient: vertical; /* Đặt hướng cho box layout là dọc. */
+                -webkit-line-clamp: 1; /* Giới hạn số dòng hiển thị là 1. */
+                overflow: hidden; /* Ẩn phần nội dung vượt quá kích thước của phần tử. */
+            }
+
+        .themvaogiovatrasau {
+            display: flex; /* Sử dụng Flexbox cho phần tử. */
+            justify-content: center; /* Căn giữa nội dung bên trong. */
+            align-items: center; /* Căn giữa nội dung theo chiều dọc. */
+            padding: 8px; /* Thêm khoảng đệm bên trong là 8px. */
+            gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+            white-space: nowrap; /* Ngăn không cho văn bản xuống dòng. */
+            width: 100%; /* Đặt chiều rộng cho phần tử là 100%. */
+            height: 40px; /* Đặt chiều cao cho phần tử là 40px. */
+            cursor: pointer; /* Hiển thị con trỏ dạng tay khi di chuột qua nút. */
+            background: rgb(255, 255, 255); /* Đặt màu nền cho nút là trắng. */
+            font-size: 16px; /* Kích thước chữ cho nút là 16px. */
+            line-height: 150%; /* Chiều cao dòng là 150%. */
+            color: rgb(10, 104, 255); /* Đặt màu chữ cho nút là xanh dương. */
+            border: 1px solid rgb(10, 104, 255); /* Đặt viền cho nút với màu xanh dương. */
+            border-radius: 4px; /* Bo tròn góc cho nút. */
+        }
+
+            .themvaogiovatrasau span {
+                display: flex; /* Sử dụng Flexbox cho phần tử con. */
+                justify-content: center; /* Căn giữa nội dung bên trong. */
+                align-items: center; /* Căn giữa nội dung theo chiều dọc. */
+                padding: 8px; /* Thêm khoảng đệm bên trong là 8px. */
+                gap: 8px; /* Đặt khoảng cách giữa các phần tử là 8px. */
+                white-space: nowrap; /* Ngăn không cho văn bản xuống dòng. */
+                width: 100%; /* Đặt chiều rộng cho phần tử là 100%. */
+                height: 40px; /* Đặt chiều cao cho phần tử là 40px. */
+                cursor: pointer; /* Hiển thị con trỏ dạng tay khi di chuột qua nút. */
+                background: rgb(255, 255, 255); /* Đặt màu nền cho nút là trắng. */
+                font-size: 16px; /* Kích thước chữ cho nút là 16px. */
+                line-height: 150%; /* Chiều cao dòng là 150%. */
+                color: rgb(10, 104, 255); /* Đặt màu chữ cho nút là xanh dương. */
+                border-radius: 4px; /* Bo tròn góc cho nút. */
+            }
+
+        .quangcao {
+            display: -webkit-box; /* Sử dụng box layout cho WebKit. */
+            width: 360px; /* Đặt chiều rộng cho quảng cáo là 360px. */
+        }
+
+            .quangcao img {
+                
+                width: 360px; /* Đặt chiều rộng cho hình ảnh trong quảng cáo là 360px. */
+            }
+
+
+
+
+        .flavor-button {
+            display: inline-flex; /* Hiển thị phần tử như một flex container nhưng vẫn nằm cùng dòng với các phần tử khác */
+            align-items: center; /* Căn giữa nội dung theo chiều dọc bên trong flex container */
+            border: 2px solid #007bff; /* Đặt viền có độ dày 2px và màu xanh dương */
+            border-radius: 12px; /* Bo góc của phần tử, tạo hiệu ứng góc tròn với bán kính 12px */
+            padding: 5px 10px; /* Thêm khoảng cách giữa nội dung và viền (5px trên/dưới và 10px trái/phải) */
+            font-family: Arial, sans-serif; /* Sử dụng font chữ Arial, hoặc font mặc định không có chân */
+            font-size: 14px; /* Cỡ chữ là 14px */
+            color: #007bff; /* Màu chữ là xanh dương (#007bff) */
+            background-color: white; /* Màu nền của nút là màu trắng */
+            cursor: pointer; /* Khi di chuột lên nút, con trỏ sẽ thành hình bàn tay để biểu thị có thể nhấp vào */
+            position: relative; /* Thiết lập vị trí tương đối, cho phép các phần tử con có thể định vị dựa trên phần tử này */
+            width: 50px; /* Chiều rộng cố định của nút là 50px */
+            height: 25px; /* Chiều cao cố định của nút là 25px */
+        }
+
+            .flavor-button .checkmark {
+                display: inline-block; /* Hiển thị như một khối trong dòng (inline), giúp căn chỉnh với văn bản xung quanh */
+                width: 10px; /* Chiều rộng của biểu tượng đánh dấu là 10px */
+                height: 10px; /* Chiều cao của biểu tượng đánh dấu là 10px */
+                background-color: #007bff; /* Màu nền của biểu tượng đánh dấu là xanh dương */
+                border-radius: 50%; /* Bo tròn hoàn toàn, tạo thành hình tròn */
+                color: white; /* Màu của ký tự bên trong là trắng */
+                font-size: 10px; /* Cỡ chữ của ký tự bên trong là 10px */
+                text-align: center; /* Căn giữa văn bản hoặc ký tự bên trong biểu tượng */
+                margin-left: 8px; /* Tạo khoảng cách 8px từ bên trái (giữa biểu tượng và văn bản nút) */
+                padding: 1px; /* Thêm khoảng cách bên trong của biểu tượng đánh dấu */
+            }
+
+    </style>
+</head>
+<body class="main">
+   
+    <div class="khungto">
+
+        <div class="khung5o">
+            <div class="min-khung5o">
+
+                <span> Trang chủ </span>
+                <div class="muiten">  </div>
+                <div> > </div>
+                <div class="muiten">  </div>
+                <span> Đồ Chơi - Mẹ & Bé </span>
+                <div class="muiten">  </div>
+                <div> > </div>
+                <div class="muiten">  </div>
+                <span> Dinh dưỡng cho người lớn </span>
+                <div class="muiten">  </div>
+                <div> > </div>
+                <div class="muiten">  </div>
+                <span> Lon Sữa Glucerma 800g/lon - Tặng 2 gói dùng thử </span>
+                <div class="muiten">  </div>
+            </div>
+        </div>
+        <!------------------------------------------>   <!------------------------------------------>
+        <div class="khungcua3to">
+            <div class="min-khungcua3to">
+                <div class="min-khung1">
+                    <div class="min-min-khung1">
+                        <div class="lonsuato">
+                            <img src="~/Content/anh/lon sua to.png" />
+                        </div>
+                        <div class="khung4o">
+                            <span class="min-khung4o">
+                                <img src="~/Content/anh/lonsuanho.png" />
+                            </span>
+                            <span class="min-khung4o">
+                                <img src="~/Content/anh/lonsuanho.png" />
+                            </span>
+                            <span class="min-khung4o">
+                                <img src="~/Content/anh/lonsuanho.png" />
+                            </span>
+                            <span class="min-khung4o">
+                                <img src="~/Content/anh/lonsuanho.png" />
+                            </span>
+                        </div>
+                        <!------------------------------------------>   <!------------------------------------------>
+                        <div class="khungxemthem">
+                            <div class="khungiconxemthem">
+                                <img src="~/Content//anh/xem thêm.png" />
+                                <div class="min-khungiconxemthem">
+                                    <span> Xem Thêm</span>
+                                    <a>Ưu điểm & lưu ý của sản phẩm </a>
+                                </div>
+                            </div>
+                            <div> > </div>
+                        </div>
+                        <!------------------------------------------>   <!------------------------------------------>
+                    </div>
+                    <div class="min-khung2">
+                        <div class="min-khung2-1">
+                            <div class="khungthongtin">
+                                <img src="~/Content/anh/Topdeal.png" />
+                                <img src="~/Content/anh/30 ngày đổi trả.png" />
+                                <img src="~/Content/anh/chính hãng.png" />
+                                <span> Thương hiệu : </span>
+                                <span style="color:aqua;">  Glucerna</span>
+                            </div>
+
+                            <h1> Lon sữa Glucerna 800g/lon - Tặng 2 gói dùng thử </h1>
+
+                            <div class="khungdanhgia">
+                                <div class="khung5-0">
+                                    5.0
+                                    <span style="color:darkkhaki"> ★★★★★ </span>
+                                    <span class="chumo"> (11) | Đã bán 436  </span>
+                                </div>
+                            </div>
+                            <div class="madeinspain">
+                                <span> Made in Spain </span>
+                            </div>
+                            <div class="khungsodo">
+                                <span style="color:crimson;" class="sodo"> 845.000 </span>
+                                <span class="giamgia"> -18% </span>
+                                <img src="~/Content/anh/chấm than.png" />
+                            </div>
+                            <div class="flavor-button">
+                                Vani
+                                <span class="checkmark">✓</span>
+                            </div>
+                            <!---------------khung chọn hương vị ------------->
+                        </div>
+                        <div class="min-khung2-2">
+                            <div class="thongtinvanchuyen"> Thông tin vận chuyển </div>
+                            <div class="thongtingiaoden">
+                                <div class="chuthongtingiaoden"> Giao đến Q. 1, P.Đổi Nghé, Hồ Chí Minh </div>
+                                <span style="color:aqua;"> đổi </span>
+                            </div>
+                            <div class="giaosieutocvagiaodungsangmai">
+                                <div class="min-giaosieutocvagiaodungsangmai-1">
+                                    <div class="min-min-giaotocvagiaodungsangmai-1">
+                                        <img src="~/Content/anh/now.png" />
+                                        <a> Giao siêu tốc 2h </a>
+                                    </div>
+                                    <div class="truoc12h">
+                                        <span> Trước 11h hôm nay : </span>
+                                        <span style="color:aquamarine;"> Miễn phí  </span>
+                                        <span>&nbsp;</span>
+                                        <del> 25.000 </del>
+                                    </div>
+                                </div>
+                                <!---------------------------------->
+                                <div class="min-giaosieutocvagiaodungsangmai-1">
+                                    <div class="min-min-giaotocvagiaodungsangmai-1">
+                                        <img src="~/Content/anh/mattroi.png" />
+                                        <a> Giao đúng sáng mai  </a>
+                                    </div>
+                                    <div class="truoc12h">
+                                        <span> 8h - 12h, 11/10: </span>
+                                        <span style="color:aquamarine;"> Miễn phí  </span>
+                                        <span>&nbsp;</span>
+                                        <del> 19.600 </del>
+                                    </div>
+                                </div>
+                                <div class="Freeship">
+                                    <img src="~/Content/anh/xemauxanhFreeship.png" />
+                                    <span> Freeship 10k đơn từ 45k, Freeship 25k đơn từ 100k </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="min-khung2-3">
+                            <div class="khungdichvubosung">
+                                <span> Dịch vụ bổ sung </span>
+                                <div class="uudai-muatruoc">
+                                    <img src="~/Content/anh/tikicard.png" />
+                                    <div class="khunguudai-muatruoc">
+                                        <div> Ưu đãi đến 600k với thẻ TikiCard </div>
+                                        <div class="dangky"> Đăng ký </div>
+                                    </div>
+                                </div>
+                                <div class="uudai-muatruoc">
+                                    <img src="~/Content/anh/paylater.png" />
+                                    <div class="khunguudai-muatruoc">
+                                        <div> Mua trước trả sau </div>
+                                        <div class="dangky"> Đăng ký </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="danggia">
+                    <div class="min-danggia">
+                        <div class="min-danggia-1">
+                            <img src="~/Content/anh/tiikduoi.jpg" />
+                            <div class="chiadoikhungmin-danggia-1">
+                                <span> Tiki Trading </span>
+                                <div class="chiaduoidoikhungmin-danggia-1">
+                                    <img src="~/Content/anh/official.png" />
+
+                                    <div class="min-chiaduoidoikhungmin-danggia-1">
+                                        <div class="chiadoi">
+                                            <span> 4.7</span>
+                                            <a style="color:yellow;"> ★ </a>
+                                            <div class="chumo"> (5.5tr+ đáng giá) </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="loidangchia">
+                        <div class="khungsoluong">
+                            <p class="soluong"> Số lượng </p>
+                            <div class="congtru">
+
+                                <div class="quantity-selector">
+                                    <button onclick="decrement()">-</button>
+                                    <input type="number" id="quantity" value="1" min="1" readonly>
+                                    <button onclick="increment()">+</button>
+                                </div>
+                            </div>
+                            <div class="tamtinh">
+                                <a> Tạm tính </a>
+                                <div class="khungtien">
+                                </div>
+                                <div class="price">
+                                    <span id="total-price">1.034.550</span> đ
+                                </div>
+                            </div>
+                            <script>
+                                const pricePerItem = 1034550; // Giá mỗi sản phẩm là 1.034.550 đ
+
+                                function updateTotalPrice() {
+                                    let quantity = document.getElementById('quantity').value;
+                                    let totalPrice = pricePerItem * quantity;
+                                    document.getElementById('total-price').innerText = totalPrice.toLocaleString(); // Hiển thị số tiền với định dạng
+                                }
+
+                                function decrement() {
+                                    let quantity = document.getElementById('quantity');
+                                    if (quantity.value > 1) {
+                                        quantity.value--;
+                                        updateTotalPrice();
+                                    }
+                                }
+
+                                function increment() {
+                                    let quantity = document.getElementById('quantity');
+                                    quantity.value++;
+                                    updateTotalPrice();
+                                }
+                            </script>
+                            <!-------------------------------------->
+                        </div>
+                        <div class="khungmuangaythemvaogiotrasau">
+                            <div class="khungmuangay">
+                                <span> Mua Ngay</span>
+                            </div>
+                            <div class="themvaogiovatrasau">
+                                <span> Thêm Vào giỏ </span>
+                            </div>
+                            <div class="themvaogiovatrasau">
+                                <span> Mua trước trả sau </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quangcao">
+                        <img src="~/Content/anh/dienmayxanh.png" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
